@@ -1,0 +1,149 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.logo img {
+  width: 50px;
+  margin-right: 10px;
+}
+
+.logo h1 {
+  font-size: 28px;
+  font-weight: bold;
+  color: #000;
+}
+
+.card {
+  display: flex;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  max-width: 800px;
+  width: 90%;
+  justify-content: space-between;
+}
+
+.login,
+.cadastro {
+  flex: 1;
+  padding: 20px;
+}
+
+.login {
+  border-right: 1px solid #ddd;
+}
+
+h2 {
+  margin-bottom: 15px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  margin-bottom: 12px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.btn-black,
+.btn-yellow {
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-black {
+  background: #000;
+  color: #fff;
+}
+
+.btn-black:hover {
+  background: #333;
+}
+
+.btn-yellow {
+  background: #f7c948;
+  color: #000;
+}
+
+.btn-yellow:hover {
+  background: #f1b400;
+}
+
+@media (max-width: 768px) {
+  .card {
+    flex-direction: column;
+    width: 95%;
+  }
+
+  .login,
+  .cadastro {
+    padding: 15px;
+  }
+
+  .login {
+    border-right: none;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .logo {
+    flex-direction: column;
+  }
+
+  .logo img {
+    margin: 0 0 10px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .login,
+  .cadastro {
+    padding: 10px;
+  }
+
+  input {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .btn-black,
+  .btn-yellow {
+    padding: 8px;
+    font-size: 14px;
+  }
+}

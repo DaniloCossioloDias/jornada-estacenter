@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="logo">
+    <img src="" alt="Logo Estacenter" />
+    <h1>Estacenter</h1>
+  </div>
+
+  <div class="card">
+    <div class="login">
+      <h2>Login</h2>
+      <form (ngSubmit)="loginUsuario()">
+        <input type="email" placeholder="E-mail" [(ngModel)]="emailLogin" name="emailLogin" required />
+        <input type="password" placeholder="Senha" [(ngModel)]="senhaLogin" name="senhaLogin" required />
+        <button class="btn-black" type="submit">Entrar</button>
+      </form>
+    </div>
+
+    <div class="cadastro">
+      <h2>Cadastro</h2>
+      <form (ngSubmit)="cadastrarUsuario()">
+        <input type="text" placeholder="Nome" [(ngModel)]="nome" name="nome" required />
+        <input type="email" placeholder="Email" [(ngModel)]="emailCadastro" name="emailCadastro" required />
+        <input type="password" placeholder="Senha" [(ngModel)]="senhaCadastro" name="senhaCadastro" required />
+        <input type="password" placeholder="Confirmar Senha" [(ngModel)]="confirmaSenha" name="confirmaSenha" required />
+        <button class="btn-yellow" type="submit">Cadastrar</button>
+      </form>
+    </div>
+  </div>
+</div>
