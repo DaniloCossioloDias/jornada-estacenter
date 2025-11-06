@@ -1,0 +1,66 @@
+.container {
+  padding: 24px;
+}
+
+.section-catraca {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.card {
+  background: #f1f1f1;
+  padding: 20px;
+  border-radius: 12px;
+  flex: 1;
+}
+
+.camera {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+.buttons {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 30px;
+}
+
+.btn-liberar {
+  background: black;
+  color: white;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 40px;
+  font-size: 16px;
+}
+
+.btn-travar {
+  background: #f4b000;
+  color: black;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 40px;
+  font-size: 16px;
+}
+
+.tabela {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tabela th,
+.tabela td {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.ok {
+  color: green;
+}
+
+.negado {
+  color: red;
+}

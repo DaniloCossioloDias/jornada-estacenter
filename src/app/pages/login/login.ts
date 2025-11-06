@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 interface Usuario {
   nome: string;
@@ -16,6 +17,9 @@ interface Usuario {
   styleUrls: ['./login.scss']
 })
 export class LoginComponent {
+
+  constructor(private router: Router) {}
+
   nome = '';
   emailCadastro = '';
   senhaCadastro = '';
@@ -49,9 +53,10 @@ export class LoginComponent {
     }
 
     const usuario: Usuario = JSON.parse(usuarioSalvo);
-    if (this.emailLogin.trim() === usuario.email && this.senhaLogin === usuario.senha) {
-      alert(`Bem-vindo, ${usuario.nome}!`);
 
+    if (this.emailLogin.trim() === usuario.email && this.senhaLogin === usuario.senha) {
+      localStorage.setItem('usuarioLogado', usuario.nome);
+      this.router.navigate(['/catraca']);
     } else {
       alert('E-mail ou senha incorretos.');
     }

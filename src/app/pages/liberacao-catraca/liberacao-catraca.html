@@ -1,0 +1,55 @@
+<div class="container">
+  <h1>Liberação de Catraca</h1>
+
+  <div class="section-catraca">
+    <div class="info-card card">
+      <strong>Funcionário:</strong>
+      <p>{{ usuarioLogado }}</p>
+
+      <strong>Horário:</strong>
+      <p>{{ gerarHorario() }}</p>
+
+      <strong>Setor:</strong>
+      <p>Administrativo</p>
+    </div>
+
+    <div class="camera card">
+      <p>Câmera ao Vivo - Catraca 1</p>
+    </div>
+  </div>
+
+  <div class="buttons">
+    <button class="btn-liberar" (click)="liberar()">Liberar</button>
+    <button class="btn-travar" (click)="travar()">Travar</button>
+  </div>
+
+  <h2>Histórico de Estacionamento</h2>
+
+  <table class="tabela">
+    <thead>
+      <tr>
+        <th>Número do Veículo</th>
+        <th>Funcionário</th>
+        <th>Setor</th>
+        <th>Horário</th>
+        <th>Ação</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let item of historico">
+        <td>{{ item.veiculo }}</td>
+        <td>{{ item.funcionario }}</td>
+        <td>{{ item.setor }}</td>
+        <td>{{ item.horario }}</td>
+        <td [ngClass]="item.acao === 'Liberado' ? 'ok' : 'negado'">
+          {{ item.acao }}
+        </td>
+      </tr>
+
+      <tr *ngIf="historico.length === 0">
+        <td colspan="5">Nenhum registro no histórico.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
