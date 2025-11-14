@@ -5,68 +5,110 @@ body {
   padding: 0;
   line-height: 1.6;
   color: #333;
+  padding-top: 70px;
+  overflow-x: hidden;
 }
 
+/* MENU FIXO */
+.menu-topo {
+  width: 100%;
+  background: #000;
+  color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  z-index: 9999;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+}
+
+.menu-inner {
+  width: 90%;
+  max-width: 1300px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu-title {
+  font-size: 1.9em;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.menu-actions button {
+  padding: 14px 32px;
+  border: none;
+  background: #ff3b3b;
+  color: white;
+  border-radius: 35px;
+  font-size: 1.1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s ease;
+  box-shadow: 0 5px 15px rgba(255, 0, 0, 0.3);
+}
+
+.menu-actions button:hover {
+  background: #cc0000;
+  transform: translateY(-3px);
+}
+
+/* CONTAINER */
 .container {
   padding: 40px;
-  max-width: 1200px; 
-  width: 90%; 
-  margin: 30px auto; 
+  max-width: 1200px;
+  width: 90%;
+  margin: 30px auto;
   background-color: #fff;
   border-radius: 15px;
-  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.08); 
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.08);
 }
 
 h1 {
   text-align: center;
   color: #222;
   margin-bottom: 35px;
-  font-size: 2.8em; 
+  font-size: 2.8em;
   font-weight: bold;
-  letter-spacing: -0.5px;
 }
 
 h2 {
   color: #333;
   margin-top: 50px;
   margin-bottom: 25px;
-  font-size: 2em; 
-  border-bottom: 3px solid #f4b000; 
+  font-size: 2em;
+  border-bottom: 3px solid #f4b000;
   padding-bottom: 12px;
-  letter-spacing: -0.2px;
 }
 
 .section-catraca {
   display: flex;
-  gap: 30px; 
+  gap: 30px;
   margin-bottom: 40px;
 }
 
 .card {
-  background: #fdfdfd; 
+  background: #fdfdfd;
   padding: 30px;
   border-radius: 15px;
   flex: 1;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05); 
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
   border: 1px solid #eee;
-  transition: transform 0.2s ease-in-out;
-}
-
-.card:hover {
-    transform: translateY(-3px);
 }
 
 .info-card strong {
-  color: #222;
-  font-size: 1.2em; 
+  font-size: 1.2em;
   display: block;
   margin-bottom: 10px;
-  font-weight: 600;
 }
 
 .info-card p {
   margin-bottom: 18px;
-  color: #555;
   font-size: 1.1em;
 }
 
@@ -74,35 +116,26 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 250px; 
+  min-height: 250px;
   background-color: #e9ecef;
-  color: #777;
-  font-style: italic;
-  font-size: 1.2em;
-  border: 3px dashed #ccc; 
+  border: 3px dashed #ccc;
   border-radius: 15px;
-  text-align: center;
 }
 
 .buttons {
   display: flex;
-  gap: 25px; 
+  gap: 25px;
   margin-bottom: 50px;
   justify-content: center;
 }
 
 .btn-liberar,
 .btn-travar {
-  padding: 18px 40px; 
-  border: none;
-  border-radius: 50px; 
+  padding: 18px 40px;
+  border-radius: 50px;
   font-size: 1.2em;
   font-weight: bold;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-  text-transform: uppercase;
-  letter-spacing: 0.8px;
 }
 
 .btn-liberar {
@@ -110,21 +143,9 @@ h2 {
   color: white;
 }
 
-.btn-liberar:hover {
-  background: #333;
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-}
-
 .btn-travar {
   background: #f4b000;
   color: #000;
-}
-
-.btn-travar:hover {
-  background: #ffc107;
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 
 .tabela {
@@ -133,178 +154,27 @@ h2 {
   margin-top: 30px;
   background-color: #fff;
   border-radius: 15px;
-  overflow: hidden; 
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
 }
 
 .tabela th,
 .tabela td {
   padding: 18px;
   border-bottom: 1px solid #eee;
-  text-align: left;
 }
 
 .tabela th {
-  background-color: #f4b000; 
+  background-color: #f4b000;
   color: #000;
   font-weight: bold;
-  text-transform: uppercase;
-  font-size: 1em; 
-  letter-spacing: 0.8px;
-}
-
-.tabela tbody tr:nth-child(even) {
-  background-color: #fefefe; 
-}
-
-.tabela tbody tr:hover {
-  background-color: #f5f5f5;
-  transition: background-color 0.2s ease-in-out;
 }
 
 .ok {
-  color: #28a745; 
+  color: #28a745;
   font-weight: bold;
 }
 
 .negado {
-  color: #dc3545; 
+  color: #dc3545;
   font-weight: bold;
-}
-
-.tabela tr * {
-  vertical-align: middle;
-}
-
-.tabela td:last-child {
-  text-align: center;
-}
-
-.tabela th:first-child {
-  border-top-left-radius: 15px;
-}
-
-.tabela th:last-child {
-  border-top-right-radius: 15px;
-}
-
-.tabela tbody tr:last-child td {
-  border-bottom: none; 
-}
-
-.tabela tbody tr *[colspan="5"] {
-    text-align: center;
-    font-style: italic;
-    color: #777;
-}
-
-
-@media (max-width: 992px) {
-  h1 {
-    font-size: 2.4em;
-  }
-  h2 {
-    font-size: 1.8em;
-  }
-  .section-catraca {
-    flex-direction: column;
-    gap: 20px;
-  }
-  .camera {
-    min-height: 200px;
-  }
-  .buttons {
-    flex-wrap: wrap; 
-    justify-content: center;
-  }
-  .btn-liberar,
-  .btn-travar {
-    width: calc(50% - 15px); 
-    padding: 16px 30px;
-    font-size: 1.1em;
-  }
-}
-
-@media (max-width: 768px) {
-  .container {
-    padding: 25px;
-    width: 95%;
-    margin: 20px auto;
-  }
-  h1 {
-    font-size: 2em;
-    margin-bottom: 25px;
-  }
-  h2 {
-    font-size: 1.6em;
-    margin-top: 35px;
-  }
-  .card {
-    padding: 20px;
-  }
-  .info-card strong {
-    font-size: 1.1em;
-  }
-  .info-card p {
-    font-size: 1em;
-  }
-  .camera {
-    min-height: 180px;
-    font-size: 1.1em;
-  }
-  .buttons {
-    flex-direction: column;
-    gap: 15px;
-    margin-bottom: 30px;
-  }
-  .btn-liberar,
-  .btn-travar {
-    width: 100%; 
-    padding: 14px 25px;
-    font-size: 1em;
-  }
-  .tabela th,
-  .tabela td {
-    padding: 12px;
-    font-size: 0.9em;
-  }
-  .tabela th {
-    font-size: 0.95em;
-  }
-}
-
-@media (max-width: 480px) {
-  .container {
-    padding: 15px;
-    margin: 15px auto;
-  }
-  h1 {
-    font-size: 1.6em;
-    margin-bottom: 20px;
-  }
-  h2 {
-    font-size: 1.3em;
-    margin-top: 25px;
-    padding-bottom: 8px;
-  }
-  .card {
-    padding: 15px;
-  }
-  .camera {
-    min-height: 150px;
-    font-size: 0.9em;
-  }
-  .btn-liberar,
-  .btn-travar {
-    padding: 12px 20px;
-    font-size: 0.9em;
-  }
-  .tabela th,
-  .tabela td {
-    padding: 10px;
-    font-size: 0.8em;
-  }
-  .tabela th {
-    font-size: 0.85em;
-  }
 }

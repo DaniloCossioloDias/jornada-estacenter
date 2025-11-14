@@ -25,6 +25,7 @@ export class LiberacaoCatracaPage {
     if (typeof window !== 'undefined') {
       this.usuarioLogado = localStorage.getItem('usuarioLogado') || 'Desconhecido';
     }
+
     this.carregarHistorico();
   }
 
@@ -33,10 +34,7 @@ export class LiberacaoCatracaPage {
   }
 
   gerarPlaca(): string {
-    const letras = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    const letra = () => letras[Math.floor(Math.random() * letras.length)];
-    const num = () => Math.floor(Math.random() * 10);
-    return `${letra()}${letra()}${letra()}-${num()}${num()}${num()}${num()}`;
+    return 'ABC-0000';
   }
 
   adicionarRegistro(acao: 'Liberado' | 'Bloqueado') {
@@ -71,5 +69,10 @@ export class LiberacaoCatracaPage {
       const salvo = localStorage.getItem('historicoCatraca');
       if (salvo) this.historico = JSON.parse(salvo);
     }
+  }
+
+  logout() {
+    localStorage.removeItem('usuarioLogado');
+    window.location.href = '/login';
   }
 }

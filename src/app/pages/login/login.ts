@@ -34,32 +34,49 @@ export class LoginComponent {
       return;
     }
 
-    const usuario: Usuario = {
+    const usuariosSalvos = localStorage.getItem('usuarios');
+    let usuarios: Usuario[] = usuariosSalvos ? JSON.parse(usuariosSalvos) : [];
+
+    const existe = usuarios.some(u => u.email === this.emailCadastro.trim());
+    if (existe) {
+      alert('Já existe uma conta com este e-mail.');
+      return;
+    }
+
+    const novoUsuario: Usuario = {
       nome: this.nome.trim(),
       email: this.emailCadastro.trim(),
       senha: this.senhaCadastro
     };
 
-    localStorage.setItem('usuario', JSON.stringify(usuario));
+    usuarios.push(novoUsuario);
+    localStorage.setItem('usuarios', JSON.stringify(usuarios));
+
     alert('Cadastro realizado com sucesso!');
     this.limparCadastro();
   }
 
   loginUsuario() {
-    const usuarioSalvo = localStorage.getItem('usuario');
-    if (!usuarioSalvo) {
+    const usuariosSalvos = localStorage.getItem('usuarios');
+    if (!usuariosSalvos) {
       alert('Nenhum usuário cadastrado.');
       return;
     }
 
-    const usuario: Usuario = JSON.parse(usuarioSalvo);
+    const usuarios: Usuario[] = JSON.parse(usuariosSalvos);
 
-    if (this.emailLogin.trim() === usuario.email && this.senhaLogin === usuario.senha) {
-      localStorage.setItem('usuarioLogado', usuario.nome);
-      this.router.navigate(['/catraca']);
-    } else {
+    const usuario = usuarios.find(
+      u => u.email === this.emailLogin.trim() && u.senha === this.senhaLogin
+    );
+
+    if (!usuario) {
       alert('E-mail ou senha incorretos.');
+      this.limparLogin();
+      return;
     }
+
+    localStorage.setItem('usuarioLogado', usuario.nome);
+    this.router.navigate(['/catraca']);
 
     this.limparLogin();
   }
