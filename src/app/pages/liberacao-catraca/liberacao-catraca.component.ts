@@ -20,6 +20,7 @@ export class LiberacaoCatracaPage {
 
   historico: Registro[] = [];
   usuarioLogado = '';
+  private segredo = 'minha-chave-secreta';
 
   constructor() {
     if (typeof window !== 'undefined') {
@@ -50,11 +51,54 @@ export class LiberacaoCatracaPage {
     this.salvarHistorico();
   }
 
+  // ================== Função para validar token ==================
+  private validarToken(): boolean {
+    if (typeof window === 'undefined') return false;
+
+    const match = document.cookie.match(/(?:^|; )token=([^;]*)/);
+    const token = match ? match[1] : null;
+
+    if (!token) {
+      this.redirecionarLogin();
+      return false;
+    }
+
+    try {
+      const [_, payloadB64, __] = token.split('.');
+      if (!payloadB64) throw new Error('Token malformado');
+
+      const payloadJson = atob(payloadB64.replace(/-/g, '+').replace(/_/g, '/'));
+      const decoded: any = JSON.parse(payloadJson);
+
+      const agora = Math.floor(Date.now() / 1000);
+      if (!decoded.exp || decoded.exp < agora) {
+        console.warn('Token expirado');
+        this.redirecionarLogin();
+        return false;
+      }
+
+      return true;
+
+    } catch (err) {
+      console.error('Token inválido', err);
+      this.redirecionarLogin();
+      return false;
+    }
+  }
+
+  private redirecionarLogin() {
+    document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    window.location.href = '/login';
+  }
+  // ================================================================
+
   liberar() {
+    if (!this.validarToken()) return; // verifica antes
     this.adicionarRegistro('Liberado');
   }
 
   travar() {
+    if (!this.validarToken()) return; // verifica antes
     this.adicionarRegistro('Bloqueado');
   }
 
@@ -73,6 +117,6 @@ export class LiberacaoCatracaPage {
 
   logout() {
     localStorage.removeItem('usuarioLogado');
-    window.location.href = '/login';
+    this.redirecionarLogin();
   }
 }
